@@ -69,7 +69,7 @@ Ward works nice on all popular operating systems, because it uses [OSHI](https:/
 
 ### Config
 
-If you want to change Ward's configuration, you can edit `setup.ini`. When using Docker, use the environment variables `WARD_NAME`,`WARD_THEME`, `WARD_PORT` to automatically regenerate this file at startup. Using any environment variable listed will enable the defaults below and immediately start Ward without the GUI setup. 
+If you want to change Ward's configuration, you can edit `setup.ini`. When using Docker, use the environment variables `WARD_NAME`,`WARD_THEME`, `WARD_PORT` to automatically regenerate this file at startup. Using any environment variable listed will enable the defaults below and immediately start Ward without the GUI setup.
 
 | Setting         | Env var         | Description                                  | Default |
 |-----------------|-----------------|----------------------------------------------|---------|
@@ -93,7 +93,8 @@ backgroundColor = #303030
 ```
 
 ### Credits
-Original Creator: https://github.com/Rudolf-Barbu/Ward
+
+Original Creator: <https://github.com/Rudolf-Barbu/Ward>
 <a href="https://www.flaticon.com/free-icons/control-panel" title="control panel icons">Control panel icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/processor" title="processor icons">Processor icons created by Those Icons - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/ram" title="ram icons">Ram icons created by srip - Flaticon</a>
