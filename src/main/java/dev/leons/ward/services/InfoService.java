@@ -128,12 +128,11 @@ public class InfoService
         OperatingSystem.OSVersionInfo osVersionInfo = operatingSystem.getVersionInfo();
         GlobalMemory globalMemory = systemInfo.getHardware().getMemory();
 
-        String osDescription = operatingSystem.getFamily() + " " + osVersionInfo.getVersion() + ", "
-                + osVersionInfo.getCodeName();
+        String osDescription = operatingSystem.getFamily() + " " + osVersionInfo.getVersion();
         machineDto.setOperatingSystem(osDescription);
 
         long totalRam = globalMemory.getTotal();
-        machineDto.setTotalRam(getConvertedCapacity(totalRam) + " Ram");
+        machineDto.setTotalRam(getConvertedCapacity(totalRam) + " RAM");
 
         Optional<PhysicalMemory> physicalMemoryOptional = globalMemory.getPhysicalMemory().stream().findFirst();
         String ramTypeOrOSBitDepth;
@@ -163,10 +162,11 @@ public class InfoService
         GlobalMemory globalMemory = systemInfo.getHardware().getMemory();
 
     // Retrieve main storage model
-        String mainStorage = hwDiskStores.isEmpty() ? "Undefined" : hwDiskStores.get(0).getModel().replaceAll("\\(.+?\\)", "").trim();
+        String mainStorage = hwDiskStores.isEmpty() ? "Undefined"
+            : hwDiskStores.get(0).getModel().replaceAll("\\(.+?\\)", "").trim();
         storageDto.setMainStorage(mainStorage);
 
-        long total = hwDiskStores.stream().mapToLong(HWDiskStore::getSize).sum();
+    long total = hwDiskStores.stream().mapToLong(HWDiskStore::getSize).sum();
         storageDto.setTotal(getConvertedCapacity(total) + " Total");
 
         int diskCount = hwDiskStores.size();

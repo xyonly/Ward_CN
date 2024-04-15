@@ -91,3 +91,10 @@ port = 8200
 enableFog = true
 backgroundColor = #303030
 ```
+
+### Credits
+Original Creator: https://github.com/Rudolf-Barbu/Ward
+<a href="https://www.flaticon.com/free-icons/control-panel" title="control panel icons">Control panel icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/processor" title="processor icons">Processor icons created by Those Icons - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/ram" title="ram icons">Ram icons created by srip - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/hard-disk" title="hard disk icons">Hard disk icons created by Freepik - Flaticon</a>
