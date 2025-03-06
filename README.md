@@ -64,7 +64,7 @@ Ward works nice on all popular operating systems, because it uses [OSHI](https:/
 
     1. Clone the project
     2. docker build --tag ward
-    3. docker run --restart unless-stopped -it -d --name ward  -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --privileged ward
+    3. docker run --restart unless-stopped -it -d --name ward  -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --cap-add SYS_PTRACE ward
     4. Go to localhost:4000 in web browser
 
 ### Config
