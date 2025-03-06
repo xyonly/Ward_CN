@@ -10,5 +10,6 @@ services:
             - WARD_NAME=Ward
             - WARD_FOG=true
             - WARD_BACKGROUND=#3c3c3c # disable fog to use background
-        privileged: true
+        cap_add:
+            - SYS_PTRACE
         image: antonyleons/ward
