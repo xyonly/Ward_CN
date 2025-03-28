@@ -1,87 +1,112 @@
-<h3 align = "center">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/AntonyLeons/ward/docker-image.yml">
-<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/antonyleons/ward?style=plastic">
-</h3>
-<h3 align = "center">
-    <img src = "images/logo.png" alt = "Logo" />
-</h3>
+# Ward_CN
+
+## Ward性能监控的中文版本（基于JDK17） 原项目：https://github.com/AntonyLeons/Ward
+
+
+# Ward 服务器监控工具  
+
+<h3 align="center">  
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/AntonyLeons/ward/docker-image.yml">  
+<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/antonyleons/ward?style=plastic">  
+</h3>  
+
+<h3 align="center">  
+    <img src="images/logo.png" alt="Logo" />  
+</h3>  
 
 ---
 
-## [Demo](https://status.leons.dev)
+## [演示](https://status.leons.dev)  
 
-# Quick start
+# 快速开始  
 
-## Docker
+## Docker 部署  
 
-* `docker run --restart unless-stopped -it -d --name ward  -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --cap-add SYS_PTRACE antonyleons/ward`
-* Go to localhost:4000 in web browser
+* 运行以下命令启动容器：  
 
-Also see the example [docker-compose.yml](https://github.com/AntonyLeons/Ward/blob/main/docker-compose.yml) file in the root directory.
-
-## Java
-
-Download the latest release from [here](https://github.com/AntonyLeons/Ward/releases/latest)
-
-```console
-java -jar ward.jar
+```sh
+docker run --restart unless-stopped -it -d --name ward -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --cap-add SYS_PTRACE antonyleons/ward
 ```
 
-### About
+* 在浏览器中访问 `localhost:4000`  
 
-Ward is a simple and minimalistic server monitoring tool. Ward supports adaptive design system. Also, it supports dark theme.
-It shows only principal information and can be used, if you want to see nice looking dashboard instead looking on bunch of numbers and graphs.
-Ward works nice on all popular operating systems, because it uses [OSHI](https://github.com/oshi/oshi).
+另外，可参考根目录下的 [docker-compose.yml](https://github.com/AntonyLeons/Ward/blob/main/docker-compose.yml) 示例文件。  
 
-**All features tested on:** `Windows` `Linux`
+## Java 运行  
 
-<p align = "center">
-    <img src = "images/preview.png" alt = "Preview Image" />
-    <h6 align = "center">Preview Image</h6>
-</p>
+从 [这里](https://github.com/AntonyLeons/Ward/releases/latest) 下载最新发布的 `ward.jar`，然后执行：  
+
+```sh
+java -jar ward.jar
+```  
 
 ---
 
-### Installation
+## 关于 Ward  
 
-    Create your own jar
+Ward 是一款简单且极简的服务器监控工具，支持自适应设计，并提供深色主题模式。它仅显示关键信息，非常适合希望使用美观仪表盘而非繁杂数据和图表的用户。  
+Ward 兼容所有主流操作系统，因为它使用了 [OSHI](https://github.com/oshi/oshi) 库。  
 
-    • Clone the project
-    • Import project in your IDE as Maven project
-    • mvn clean package
+**已在以下系统测试：** `Windows` `Linux`  
 
-<br>
+<p align="center">  
+    <img src="images/preview.png" alt="预览图" />  
+    <h6 align="center">预览图</h6>  
+</p>  
 
-    Run jar file
+---
 
-    1. Create you own jar as described above
-    2. Execute jar on Windows or Linux with administrative rights
-    3. Enter localhost:4000 and set up application
+## 安装  
 
-<br>
+### 创建自定义 JAR 包  
 
-    Build for Docker
+1. 克隆项目  
+2. 以 Maven 项目导入 IDE  
+3. 执行 `mvn clean package`  
+4. 请注意，pom.xml可自行修改JDK版本，默认为 JDK17
 
-    1. Clone the project
-    2. docker build --tag ward
-    3. docker run --restart unless-stopped -it -d --name ward  -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --cap-add SYS_PTRACE ward
-    4. Go to localhost:4000 in web browser
+### 运行 JAR 文件  
 
-### Config
+1. 按上述步骤创建 JAR 文件  
+2. 以管理员权限在 Windows 或 Linux 上运行  
+3. 访问 `localhost:4000` 进行应用程序设置  
 
-If you want to change Ward's configuration, you can edit `setup.ini`. When using Docker, use the environment variables `WARD_NAME`,`WARD_THEME`, `WARD_PORT` to automatically regenerate this file at startup. Using any environment variable listed will enable the defaults below and immediately start Ward without the GUI setup.
+### 构建 Docker 镜像  
 
-| Setting         | Env var         | Description                                  | Default |
-|-----------------|-----------------|----------------------------------------------|---------|
-| serverName      | WARD_NAME       | Name shown in the interface.                 | Ward    |
-| port            | WARD_PORT       | Port to listen on.                           | 4000    |
-| theme           | WARD_THEME      | Either `light` or `dark`.                    | light   |
-| enableFog       | WARD_FOG        | Either `true` or `false`.                    | true    |
-| backgroundColor | WARD_BACKGROUND | HexColor for background when fog is disabled | default |
+1. 克隆项目  
+2. 构建 Docker 镜像：  
 
-Environment variables take priority and will regenerate this file with your variables. If no environment variables are set, `setup.ini` is generated once you navigate to Ward's webpage and complete the initial setup. You can also make this file yourself before starting Ward, and place it in the same directory.
+   ```sh
+   docker build --tag ward .
+   ```
 
-For example:
+3. 运行容器：  
+
+   ```sh
+   docker run --restart unless-stopped -it -d --name ward -p 4000:4000 -e WARD_PORT=4000 -e WARD_THEME=dark --cap-add SYS_PTRACE ward
+   ```
+
+4. 在浏览器中访问 `localhost:4000`  
+
+---
+
+## 配置  
+
+要更改 Ward 的配置，可以编辑 `setup.ini` 文件。  
+使用 Docker 部署时，可以通过环境变量 `WARD_NAME`、`WARD_THEME` 和 `WARD_PORT` 自动生成配置文件，并跳过 GUI 设置。  
+
+| 设置项           | 环境变量         | 描述                                      | 默认值  |  
+|-----------------|-----------------|------------------------------------------|--------|  
+| serverName      | WARD_NAME       | 界面显示的服务器名称                      | Ward   |  
+| port            | WARD_PORT       | 监听端口                                 | 4000   |  
+| theme           | WARD_THEME      | 主题模式（`light` 或 `dark`）            | light  |  
+| enableFog       | WARD_FOG        | 是否启用背景雾效（`true` 或 `false`）    | true   |  
+| backgroundColor | WARD_BACKGROUND | 关闭雾效时的背景颜色（Hex 颜色值）       | default|  
+
+环境变量优先级高于配置文件，会覆盖 `setup.ini`。如果未设置环境变量，则 Ward 启动后会生成 `setup.ini`，或在首次访问网页时引导用户完成设置。  
+用户也可以手动创建 `setup.ini` 并放置于相同目录。  
+
+示例 `setup.ini` 配置：  
 
 ```ini
 [setup]
@@ -90,12 +115,15 @@ theme = dark
 port = 8200
 enableFog = true
 backgroundColor = #303030
-```
+```  
 
-### Credits
+---
 
-Original Creator: <https://github.com/Rudolf-Barbu/Ward>
-<a href="https://www.flaticon.com/free-icons/control-panel" title="control panel icons">Control panel icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/processor" title="processor icons">Processor icons created by Those Icons - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/ram" title="ram icons">Ram icons created by srip - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/hard-disk" title="hard disk icons">Hard disk icons created by Freepik - Flaticon</a>
+## 致谢  
+
+- 原作者: [Rudolf-Barbu](https://github.com/Rudolf-Barbu/Ward)  
+- 图标来源：  
+  - [控制面板图标 - Freepik (Flaticon)](https://www.flaticon.com/free-icons/control-panel)  
+  - [处理器图标 - Those Icons (Flaticon)](https://www.flaticon.com/free-icons/processor)  
+  - [内存 (RAM) 图标 - srip (Flaticon)](https://www.flaticon.com/free-icons/ram)  
+  - [硬盘图标 - Freepik (Flaticon)](https://www.flaticon.com/free-icons/hard-disk)  
